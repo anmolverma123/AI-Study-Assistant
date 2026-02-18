@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI Study Assistant</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+<header>
+  <h1>📚 AI Study Assistant</h1>
+  <p>Summarize • Quiz • Analyze PDFs</p>
+
+  <button onclick="toggleTheme()" class="themeBtn">
+    🌙 Toggle Mode
+  </button>
+</header>
+
+<div class="card">
+
+  <!-- Dashboard -->
+  <div class="dashboard">
+    <div>Summaries: <span id="sumCount">0</span></div>
+    <div>Quizzes: <span id="quizCount">0</span></div>
+    <div>PDFs: <span id="pdfCount">0</span></div>
+  </div>
+
+  <!-- ===== 2 PANEL GRID ===== -->
+  <div class="mainGrid">
+
+    <!-- LEFT PANEL (INPUT) -->
+    <div class="panel">
+
+      <h3>📝 Notes / PDF Upload</h3>
+
+      <input type="file"
+        id="pdfUpload"
+        accept="application/pdf">
+
+      <textarea id="notes"
+        placeholder="✍️ Paste notes or upload PDF...">
+      </textarea>
+
+      <!-- Buttons moved inside -->
+      <div class="buttons">
+
+        <button onclick="summarizeNotes()" class="btn primary">
+          🧠 Summarize
+        </button>
+
+        <button onclick="generateQuiz()" class="btn secondary">
+          ❓ MCQ Quiz
+        </button>
+
+        <button onclick="startVoice()" class="btn secondary">
+          🎤 Voice Notes
+        </button>
+
+        <button onclick="speakSummary()" class="btn secondary">
+          🔊 Listen
+        </button>
+
+        <button onclick="downloadPDF()" class="btn dark">
+          📥 Download
+        </button>
+
+        <button onclick="viewHistory()" class="btn dark">
+          📜 History
+        </button>
+
+        <button onclick="clearAll()" class="btn danger">
+          🗑 Clear
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- RIGHT PANEL (OUTPUT) -->
+    <div class="panel">
+
+      <h3>📊 Output</h3>
+
+      <div id="output" class="output"></div>
+
+    </div>
+
+  </div>
+
+  <div id="loader" class="loader hidden"></div>
+
+</div>
+
+<!-- Libraries -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.min.js"></script>
+
+<script>
+pdfjsLib.GlobalWorkerOptions.workerSrc =
+"https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.16.105/pdf.worker.min.js";
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
